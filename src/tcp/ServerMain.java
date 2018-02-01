@@ -17,7 +17,7 @@ import java.net.ConnectException;
  *
  * @author Marco Werson
  */
-public class ClientConnessioneTCP {
+public class ServerMain {
     /**
      * @param args the command line arguments
      */

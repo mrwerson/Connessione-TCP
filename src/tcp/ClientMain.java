@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author Marco Werson
  */
-public class ServerConnessioneTCP {
+public class ClientMain {
 
     /**
      * @param args the command line arguments
