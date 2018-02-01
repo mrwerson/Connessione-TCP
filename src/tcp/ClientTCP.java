@@ -26,7 +26,7 @@ public class ClientTCP {
     public ClientTCP(){       
         porta=2000;
         indirizzo="localhost";
-        this.avviaConnessione();        //alla creazione della 
+        this.avviaConnessione();       
     }
     
     public void  avviaConnessione(){
@@ -52,7 +52,7 @@ public class ClientTCP {
     public void scrivirichiesta(Socket connessione){
         String messaggio="";
             try {
-                BufferedReader inputClient= new BufferedReader(new InputStreamReader(System.in));//Input da tastiera
+                BufferedReader inputClient= new BufferedReader(new InputStreamReader(System.in));
                 BufferedReader inputRisposta= new BufferedReader(new InputStreamReader(connessione.getInputStream()));
                 PrintStream outputClient= new PrintStream(connessione.getOutputStream());
                 while(!messaggio.equals("chiudi")){
