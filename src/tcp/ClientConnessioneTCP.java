@@ -7,6 +7,8 @@ package tcp;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.net.ConnectException;
@@ -31,7 +33,9 @@ public class ClientConnessioneTCP {
         try{
             connection = new Socket(serverAddress, port);
             System.out.println("Connessione aperta");
-            Buffere4dReader inputClient=new BufferedReader(new InputStreamreader(System.in));
+            BufferedReader inputClient=new BufferedReader(new InputStreamReader(System.in)); //input tastiera
+            BufferedReader rispostaServer=new BufferedReader(new InputStreamReader(connection.getInputStream()));//stream per gestione risposta
+            PrintStream out=new PrintStream(connection.getOutputStream());//stream di output
         }
         catch(ConnectException e){
             System.err.println("Server non disponibile!");

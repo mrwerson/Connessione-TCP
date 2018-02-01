@@ -5,7 +5,10 @@
  */
 package tcp;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Level;
@@ -27,7 +30,9 @@ public class ServerConnessioneTCP {
         ServerSocket sSocket = null;
         //oggetto da usare per realizzare la connessione TCP
         Socket connection;
-
+        String inputS="";
+        String outputS="";
+        
         while(true){
             try{
                 // il server si mette in ascolto sulla porta voluta
@@ -38,6 +43,8 @@ public class ServerConnessioneTCP {
                 System.out.println("Connessione stabilita!");
                 System.out.println("Socket server: " + connection.getLocalSocketAddress());
                 System.out.println("Socket client: " + connection.getRemoteSocketAddress());
+                BufferedReader input= new BufferedReader(new InputStreamReader(connection.getInputStream()));//prende in input il messaggio inviato dal client(non avviene più la lettura da tastiera)
+                PrintStream output= new PrintStream(connection.getOutputStream());
             }
                catch(IOException e){
                    System.err.println("Errore di I/O!");
