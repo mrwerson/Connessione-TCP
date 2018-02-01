@@ -32,8 +32,8 @@ public class ServerConnessioneTCP {
         Socket connection;
         String inputS="";
         String outputS="";
-        
-        while(true){
+        boolean a=true;
+        while(a){
             try{
                 // il server si mette in ascolto sulla porta voluta
                 sSocket = new ServerSocket(port);
@@ -45,16 +45,20 @@ public class ServerConnessioneTCP {
                 System.out.println("Socket client: " + connection.getRemoteSocketAddress());
                 BufferedReader input= new BufferedReader(new InputStreamReader(connection.getInputStream()));//prende in input il messaggio inviato dal client(non avviene più la lettura da tastiera)
                 PrintStream output= new PrintStream(connection.getOutputStream());
-                input.readLine();
+                inputS=input.readLine();
                 
                 switch(inputS){
                     case "chiudi":
                         outputS="alla prossima";
+                        a=false;
                         connection.close();
                         break;
                     case "ciao":
                         outputS ="salve";
                         break;
+                    case "ti va di andare al mercatino dell'usato?":
+                        outputS ="verrei volentieri se non fossi un server :(";
+                        break;   
                     default:
                         outputS ="non so che dirti....";
                 }

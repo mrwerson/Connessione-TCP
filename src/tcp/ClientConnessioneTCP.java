@@ -28,7 +28,11 @@ public class ClientConnessioneTCP {
         String serverAddress = "localhost";
         //porta del server in ascolto
         int port = 2000;
-
+        boolean a=true;
+        
+        while(a){
+        
+   
         //apertura della connessione al server sulla porta specificata
         try{
             connection = new Socket(serverAddress, port);
@@ -36,7 +40,17 @@ public class ClientConnessioneTCP {
             BufferedReader inputClient=new BufferedReader(new InputStreamReader(System.in)); //input tastiera
             BufferedReader rispostaServer=new BufferedReader(new InputStreamReader(connection.getInputStream()));//stream per gestione risposta
             PrintStream out=new PrintStream(connection.getOutputStream());//stream di output
+            System.out.println("scrivi il messaggio da inviare al server");
+            String messaggio=inputClient.readLine();
+            out.println(messaggio);
+            out.flush();
+            String risposta=rispostaServer.readLine();
+            System.out.println(risposta);
+            if(rispostaServer.equals("ciao ciao")){
+                a=false;
+            }
         }
+       
         catch(ConnectException e){
             System.err.println("Server non disponibile!");
         }
@@ -62,5 +76,6 @@ public class ClientConnessioneTCP {
                 System.err.println("Errore nella chiusura della connessione!");
             }
         }
+    }
     }
 }
