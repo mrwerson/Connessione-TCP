@@ -45,6 +45,21 @@ public class ServerConnessioneTCP {
                 System.out.println("Socket client: " + connection.getRemoteSocketAddress());
                 BufferedReader input= new BufferedReader(new InputStreamReader(connection.getInputStream()));//prende in input il messaggio inviato dal client(non avviene più la lettura da tastiera)
                 PrintStream output= new PrintStream(connection.getOutputStream());
+                input.readLine();
+                
+                switch(inputS){
+                    case "chiudi":
+                        outputS="alla prossima";
+                        connection.close();
+                        break;
+                    case "ciao":
+                        outputS ="salve";
+                        break;
+                    default:
+                        outputS ="non so che dirti....";
+                }
+                output.println(outputS);
+                output.flush();
             }
                catch(IOException e){
                    System.err.println("Errore di I/O!");
