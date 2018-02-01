@@ -5,6 +5,10 @@
  */
 package tcp;
 
+import java.io.BufferedReader;
+import static java.lang.System.in;
+import java.net.Socket;
+
 /**
  *
  * @author Marco Werson
@@ -17,14 +21,14 @@ public class ServerTCP {
         this.avviaServer();
     }
     public void avviaServer(){
-        
+    
     }
     
-    public void leggiRichiesta(){
-        
-    }
+    public void leggiRichiesta(Socket connesione){
+
+    }  
     
-    public void mandaRisposta(){
+    public void mandaRisposta(Socket connessione){
         
     }
 }
