@@ -5,6 +5,7 @@
  */
 package tcp;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -12,7 +13,7 @@ import java.net.ConnectException;
 
 /**
  *
- * @author Monica Ciuchetti
+ * @author Marco Werson
  */
 public class ClientConnessioneTCP {
     /**
@@ -30,6 +31,7 @@ public class ClientConnessioneTCP {
         try{
             connection = new Socket(serverAddress, port);
             System.out.println("Connessione aperta");
+            Buffere4dReader inputClient=new BufferedReader(new InputStreamreader(System.in));
         }
         catch(ConnectException e){
             System.err.println("Server non disponibile!");
